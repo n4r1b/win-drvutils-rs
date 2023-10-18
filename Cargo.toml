@@ -1,0 +1,42 @@
+[package]
+name = "win-drvutils-rs"
+version = "0.1.0"
+edition = "2021"
+description = "Collection of Windows Driver Utils"
+authors = ["n4r1B"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies.windows-sys]
+git = "https://github.com/microsoft/windows-rs.git"
+features = [
+    "Wdk",
+    "Wdk_System",
+    "Wdk_Foundation",
+    "Wdk_System_SystemServices",
+    "Win32_Foundation",
+    "Win32_System_Kernel",
+    "Win32_System_WindowsProgramming",
+    "Wdk_Storage_FileSystem",
+    "Win32_System_Memory",
+    "Win32_Security",
+    "Win32_System_IO",
+    "Win32_System_Power",
+    "Win32_System_Ioctl"
+]
+
+[dependencies]
+snafu = { version = "0.7.5", default-features = false }
+bitflags = "2.4.0"
+widestring = { version = "1.0.2", default-features = false }
+lock_api = { version = "0.4.10", optional = true }
+const-zero = { version = "0.1.1", optional = true }
+
+[features]
+default = ["const_new"]
+const_new = ["dep:const-zero"]
+lock_api = ["const_new", "dep:lock_api"]
+allocator_api = []
+try_non_paged = []
+unicode_as_vec = []
