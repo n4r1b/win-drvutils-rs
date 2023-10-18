@@ -1,0 +1,33 @@
+[package]
+name = "obcallback"
+version = "0.1.0"
+edition = "2021"
+description = "Copy of the obcallback example from windows-driver-samples using win-kernel-utils"
+authors = ["n4r1B"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.dev]
+panic = "abort"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+win-drvutils-rs = { path = "../../", features = ["lock_api"]}
+log = { version ="0.4.20", features = [] }
+kernel-log = "0.1.2"
+widestring = { version = "1.0.2", default-features = false }
+
+[build-dependencies]
+winreg = "0.51.0"
+failure = {version = "0.1.8", default-features = false, features = ["std"]}
+
+[dependencies.windows-sys]
+git = "https://github.com/microsoft/windows-rs.git"
+features = [
+    "Wdk",
+    "Wdk_Foundation",
+    "Win32_Foundation",
+    "Win32_System_Ioctl"
+]
