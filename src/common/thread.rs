@@ -14,13 +14,13 @@ pub struct WduThread(PETHREAD);
 
 impl Display for WduThread {
     fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
-        write!(f, "{:#X}", self.0)
+        write!(f, "{:?}", self)
     }
 }
 
 impl Debug for WduThread {
     fn fmt(&self, f: &mut Formatter<'_>) -> core::fmt::Result {
-        write!(f, "{}", self)
+        write!(f, "{:#X}", self.0)
     }
 }
 
