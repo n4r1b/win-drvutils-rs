@@ -62,15 +62,15 @@ return the context.
 The library is organized into distinct modules, each offering unique objects and functionality. 
 Currently, the following modules are accessible:
 
-| Module    | Information                    | Notes                                                                                                                                                        |
-|-----------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| callbacks | Kernel callbacks               | Callback objects + Most kernel callbacks (Ps, Th, Ob, etc..)                                                                                                 |
-| common    | Generic objects                | Objects like `OBJECT_ATTRIBUTES`, `EPROCESS`, `ETHREAD`, etc...                                                                                              |
-| io        | I/O related kernel object      | Most `Io` related functions                                                                                                                                  |
-| memory    | Memory related kernel objects  | Most `Mm` related functions will be under this module<br/> This module also contains different Allocator impl                                                |
-| registry  | Registry related objects       | Not yet implemented                                                                                                                                          |
-| strings   | kernel Strings                 | `STRING` & `ANSI_STRING` not implmeneted.<br/> Split in str & string. str doesn't own the buffer, String owns the bufer                                      |
-| sync      | kernel Syncrhonization objects | If `lock_api`                                                                                                                                                |
+| Module    | Information                    | Notes                                                                                                                                                              |
+|-----------|--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callbacks | Kernel callbacks               | Callback objects + Most kernel callbacks (Ps, Th, Ob, etc..)                                                                                                       |
+| common    | Generic objects                | Objects like `OBJECT_ATTRIBUTES`, `EPROCESS`, `ETHREAD`, etc...                                                                                                    |
+| io        | I/O related kernel object      | Most `Io` related functions                                                                                                                                        |
+| memory    | Memory related kernel objects  | Most `Mm` related functions will be under this module<br/> This module also contains different Allocator impl                                                      |
+| registry  | Registry related objects       | Not yet implemented                                                                                                                                                |
+| strings   | kernel Strings                 | `STRING` & `ANSI_STRING` not implmeneted.<br/> Split in str & string. str doesn't own the buffer, String owns the bufer                                            |
+| sync      | kernel Syncrhonization objects | Most of the objects disccussed in [The State of Synchronization](https://www.osr.com/nt-insider/2015-issue3/the-state-of-synchronization/) (Always a good read 🙂) |
 
 > Please open an issue to discuss if you believe an object is in the wrong module.
 
