@@ -1,0 +1,61 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider=%ProviderName%
+DriverVer=12/09/2023,0.54.15.637
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+dynambus.sys  = 1,,
+
+;*****************************************
+; ToasterDynamicBus  Install Section
+;*****************************************
+
+[Manufacturer]
+%StdMfg%=Standard,NT$ARCH$.10.0...16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%ToasterDynamicBus.DeviceDesc%=ToasterDynamicBus_Device, root\dynambus
+
+[ToasterDynamicBus_Device.NT]
+CopyFiles=Drivers_Dir
+
+[ToasterDynamicBus_Device.NT.HW]
+AddReg=ToasterDynamicBus_Device.NT.AddReg
+
+[ToasterDynamicBus_Device.NT.AddReg]
+HKR,,DeviceCharacteristics,0x10001,0x0100         ; Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)"      ; Allow generic-all access to Built-in administrators and Local system
+
+[Drivers_Dir]
+dynambus.sys
+
+
+;-------------- Service installation
+[ToasterDynamicBus_Device.NT.Services]
+AddService = dynambus,%SPSVCINST_ASSOCSERVICE%, dynambus_Service_Inst
+
+; -------------- dynambus driver install sections
+[dynambus_Service_Inst]
+DisplayName    = %dynambus.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\dynambus.sys
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE          = 0x00000002
+ProviderName                    = "n4r1B"
+StdMfg                          = "(Standard system devices)"
+DiskId1                         = "Toaster Dynamic Bus Installation Disk #1"
+ToasterDynamicBus.DeviceDesc    = "Toaster Dynamic Bus Enumerator"
+dynambus.SVCDESC                = "Toaster Dynamic Bus Enumerator"

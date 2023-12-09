@@ -1,0 +1,19 @@
+[workspace]
+members = [ "toastDrv/bus/dynambus",
+            "toastDrv/bus/statbus",
+            "toastDrv/func/featured",
+            "toastDrv/func/simple",
+            "toastDrv/filter/generic",
+            "toastDrv/filter/sideband",
+            "toastDrv/toastmon" ]
+resolver = "2"
+
+[profile.dev]
+panic = "abort"
+lto = true # optional setting to enable Link Time Optimizations
+
+[profile.release]
+panic = "abort"
+lto = true # optional setting to enable Link Time Optimizations
+
+

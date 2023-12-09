@@ -1,0 +1,17 @@
+[package]
+name = "toastmon"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+wdk-alloc = "0.1.0"
+wdk-panic = "0.1.0"
+wdk-sys = "0.1.0"
+
+[build-dependencies]
+wdk-build = "0.1.0"

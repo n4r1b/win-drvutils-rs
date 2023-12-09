@@ -4,3 +4,6 @@
 /target
 /**/target
 /**/*.lock
+
+/**/.cargo-make-loadscripts
+/**/DriverCertificate.cer
